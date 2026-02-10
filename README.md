@@ -2,7 +2,7 @@
 
 Landing page website for Mindfulness Labs. (This README is in the Github and README folder.)
 
-This site collects interest (name, email, role, optional message) and sends it to a small backend API, which creates/updates a contact in Wix CRM.
+This site collects interest (name, email, role, optional message) and sends it to a Netlify Function, which creates/updates a contact in Wix CRM.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed:
 
 3. **Set up environment variables (backend)**
 
-   Create a `.env` file in the project root:
+   Create a `.env` file in the project root for local development:
 
    ```bash
    WIX_SITE_ID="<your-wix-site-id>"
@@ -37,21 +37,14 @@ Before you begin, ensure you have the following installed:
 
 4. **Run the dev servers**
 
-   Run both the frontend (Vite) and backend (Express):
+   Run the frontend with Netlify Functions locally via Netlify CLI:
 
    ```bash
-   npm run dev:full
+   npx netlify dev
    ```
 
-   - Frontend: `http://localhost:8000`
-   - Backend API: `http://localhost:3001`
-
-   Or run them separately:
-
-   ```bash
-   npm run dev
-   npm run server
-   ```
+   - Frontend: `http://localhost:8888`
+   - Function: `http://localhost:8888/.netlify/functions/subscribe`
 
 ## What the website does
 
@@ -61,9 +54,9 @@ Before you begin, ensure you have the following installed:
 
 ## How the API is used (Wix CRM)
 
-The backend lives in [server/index.js](server/index.js) and exposes:
+The Netlify Function lives in [netlify/functions/subscribe.js](netlify/functions/subscribe.js) and exposes:
 
-- `POST /api/subscribe`: Creates a Wix CRM contact using the submitted email and name.
+- `POST /.netlify/functions/subscribe`: Creates a Wix CRM contact using the submitted email and name.
   - Saves the selected role into an extended field (custom field) in Wix.
   - Saves a message into a Wix extended field whose display name is **"Message**.
 

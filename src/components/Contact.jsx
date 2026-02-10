@@ -13,13 +13,17 @@ function Contact() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const apiUrl = import.meta.env.DEV
+    ? 'http://localhost:8888/.netlify/functions/subscribe'
+    : '/.netlify/functions/subscribe';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/subscribe', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
