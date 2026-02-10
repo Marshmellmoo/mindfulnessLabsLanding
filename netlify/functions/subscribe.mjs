@@ -11,12 +11,23 @@ function normalizeName(value) {
     .toLowerCase();
 }
 
+function readEnv(name) {
+  return process.env?.[name] ?? globalThis?.Netlify?.env?.get?.(name);
+}
+
 function getWixClient() {
+  const apiKey = readEnv('WIX_API_KEY');
+  const siteId = readEnv('WIX_SITE_ID');
+
+  if (!apiKey || !siteId) {
+    throw new Error('Missing WIX_API_KEY or WIX_SITE_ID.');
+  }
+
   return createClient({
     modules: { contacts, labels, extendedFields },
     auth: ApiKeyStrategy({
-      apiKey: Netlify.env.get('WIX_API_KEY'),
-      siteId: Netlify.env.get('WIX_SITE_ID'),
+      apiKey,
+      siteId,
     }),
   });
 }
