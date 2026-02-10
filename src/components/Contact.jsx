@@ -13,9 +13,7 @@ function Contact() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const apiUrl = import.meta.env.DEV
-    ? 'http://localhost:8888/.netlify/functions/subscribe'
-    : '/.netlify/functions/subscribe';
+  const apiUrl = '/api/subscribe';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

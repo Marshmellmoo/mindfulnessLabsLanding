@@ -54,9 +54,9 @@ Before you begin, ensure you have the following installed:
 
 ## How the API is used (Wix CRM)
 
-The Netlify Function lives in [netlify/functions/subscribe.js](netlify/functions/subscribe.js) and exposes:
+The Netlify Function lives in [netlify/functions/subscribe.mjs](netlify/functions/subscribe.mjs) and exposes:
 
-- `POST /.netlify/functions/subscribe`: Creates a Wix CRM contact using the submitted email and name.
+- `POST /api/subscribe`: Creates a Wix CRM contact using the submitted email and name.
   - Saves the selected role into an extended field (custom field) in Wix.
   - Saves a message into a Wix extended field whose display name is **"Message**.
 
