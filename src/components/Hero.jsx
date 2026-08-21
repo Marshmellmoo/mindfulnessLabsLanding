@@ -30,7 +30,7 @@ function Hero() {
           <img src={logo} alt="Mindfulness Labs Logo" className="hero-logo" />
         </div>
         <p className="hero-description">
-          Culturally responsive, trauma-informed wellness tools—designed to integrate seamlessly into school communities and support educators with responsible, evidence-based AI.
+          Culturally responsive, trauma-informed wellness tools designed to integrate seamlessly into school communities and support educators with responsible, evidence-based AI.
         </p>
         <div className="button-group">
             <button className="cta-button" onClick={() => scrollToSection('contact')}>
