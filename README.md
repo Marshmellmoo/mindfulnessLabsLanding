@@ -31,9 +31,13 @@ Before you begin, ensure you have the following installed:
    WIX_SITE_ID="<your-wix-site-id>"
    WIX_API_KEY="<your-wix-api-key>"
    PORT=3001
+   BEDROCK_ACCESS_KEY_ID=<your-access-key-id>
+   BEDROCK_SECRET_ACCESS_KEY=<your-access-key>
+   BEDROCK_REGION=<your-aws-region>
+   BEDROCK_MODEL_ID=<-valid-bedrock-model-id>
    ```
 
-   Important: never commit your Wix API key.
+   Important: never commit API keys.
 
 4. **Run the dev servers**
 
@@ -88,3 +92,11 @@ To support that flow, the backend guarantees a message is always sent:
 - `npm run dev:full` - Run frontend + backend together
 - `npm run build` - Build the project for production
 - `npm run preview` - Preview the production build locally
+
+## Deployment
+
+The site is hosted on [Netlify](https://www.netlify.com/), a platform that builds and hosts the frontend directly from this GitHub repo.
+
+Once Netlify is connected to this repository, deployment should automatic! **Every push to `main` triggers a new production build and deploy**. No manual deploy step is needed --- merging or pushing to `main` is the deploy.
+
+Environment variables (e.g. `WIX_SITE_ID`, `WIX_API_KEY`, `BEDROCK_*`) must be configured in the Netlify site settings, since the `.env` file is local-only and not committed to the repo. 
